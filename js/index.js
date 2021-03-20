@@ -69,3 +69,19 @@ createBoard()
 let pacmanCurrentIndex = 490
 
 squares[pacmanCurrentIndex].classList.add('pacman')
+
+// keyCodes - up = 38, left = 37, right = 39, down = 38
+
+function control(e) {
+  if (e.keyCode === 40){
+    console.log("down key")
+  } else if (e.keyCode === 38){
+    console.log("up key")
+  } else if (e.keyCode === 37){
+    console.log("left key")
+  } else if (e.keyCode === 39){
+    console.log("right key")
+  }
+}
+
+document.addEventListener('keyup', control)
