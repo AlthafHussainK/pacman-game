@@ -72,16 +72,22 @@ squares[pacmanCurrentIndex].classList.add('pacman')
 
 // keyCodes - up = 38, left = 37, right = 39, down = 38
 
-function control(e) {
-  if (e.keyCode === 40){
-    console.log("down key")
-  } else if (e.keyCode === 38){
-    console.log("up key")
-  } else if (e.keyCode === 37){
-    console.log("left key")
-  } else if (e.keyCode === 39){
-    console.log("right key")
-  }
+switch(e.keyCode){
+  case 40:
+    console.log('down')
+    break
+  
+  case 38:
+    console.log('up')
+    break
+  
+  case 37:
+    console.log('left')
+    break
+
+  case 39:
+    console.log('right')
+    break
 }
 
 document.addEventListener('keyup', control)
