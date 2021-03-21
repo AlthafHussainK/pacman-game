@@ -71,23 +71,29 @@ let pacmanCurrentIndex = 490
 squares[pacmanCurrentIndex].classList.add('pacman')
 
 // keyCodes - up = 38, left = 37, right = 39, down = 38
+function control(e) {
+  squares[pacmanCurrentIndex].classList.remove('pacman')
+  switch(e.keyCode){
+    case 40:
+      console.log('down')
+      if (pacmanCurrentIndex + width < width*width) { pacmanCurrentIndex += width }
+      break
+    
+    case 38:
+      console.log('up')
+      if (pacmanCurrentIndex - width >= 0) { pacmanCurrentIndex -= width }
+      break
+    
+    case 37:
+      console.log('left')
+      if (pacmanCurrentIndex % width !== 0) { pacmanCurrentIndex -= 1 }
+      break
 
-switch(e.keyCode){
-  case 40:
-    console.log('down')
-    break
-  
-  case 38:
-    console.log('up')
-    break
-  
-  case 37:
-    console.log('left')
-    break
-
-  case 39:
-    console.log('right')
-    break
+    case 39:
+      console.log('right')
+      if (pacmanCurrentIndex % width < width - 1) { pacmanCurrentIndex += 1 }
+      break
+  }
+  squares[pacmanCurrentIndex].classList.add('pacman')
 }
-
 document.addEventListener('keyup', control)
