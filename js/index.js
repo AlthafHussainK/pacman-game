@@ -160,4 +160,25 @@ function moveGhost(ghost){
   const directions = [-1, +1, +width, -width]
   let direction = directions[Math.floor(Math.random() * directions.length)]
   console.log(direction)
+
+  ghost.timerId = setInterval( function() {
+
+    if (
+        !squares[ghost.currentIndex + direction].classList.contains('wall') &&
+        !squares[ghost.currentIndex + direction].classList.contains('ghost')
+    ) {
+      //remove any ghost 
+      squares[ghost.currentIndex].classList.remove(ghost.className)
+      squares[ghost.currentIndex].classList.remove('ghost')
+
+      //add direction to the current index
+      ghost.currentIndex += direction
+
+      //add ghost class
+      squares[ghost.currentIndex].classList.add(ghost.className)
+      squares[ghost.currentIndex].classList.add('ghost')
+    } else {
+      direction = directions[Math.floor(Math.random() * directions.length)]
+    }
+  }, ghost.speed)
 }
