@@ -2,6 +2,7 @@ const width = 28
 const grid = document.querySelector('.grid')
 const scoreDisplay = document.getElementById('score')
 const squares = []
+let score = 0
 
 //28 * 28 = 784
   // 0 - pac-dots
@@ -45,11 +46,11 @@ const layout = [
 function createBoard() {
   for( let i = 0; i < layout.length; i++){
     //create a sqaure
-    const sqaure = document.createElement('div')
+    const square = document.createElement('div')
     //put the square in grid
-    grid.appendChild(sqaure)
+    grid.appendChild(square)
     //put square in squares array
-    squares.push(sqaure)
+    squares.push(square)
 
 
     if(layout[i] === 0){
@@ -116,5 +117,16 @@ function control(e) {
       break
   }
   squares[pacmanCurrentIndex].classList.add('pacman')
+  pacDotEaten()
 }
 document.addEventListener('keyup', control)
+
+function pacDotEaten(){
+  if ( squares[pacmanCurrentIndex].classList.contains('pac-dot')){
+    squares[pacmanCurrentIndex].classList.remove('pac-dot')
+    score++
+    console.log(score)
+    scoreDisplay.innerHTML = score
+  }
+}
+
