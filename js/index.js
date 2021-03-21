@@ -78,7 +78,6 @@ function control(e) {
   squares[pacmanCurrentIndex].classList.remove('pacman')
   switch(e.keyCode){
     case 40:
-      console.log('down')
       if (!squares[pacmanCurrentIndex + width].classList.contains('ghost-lair') &&
           !squares[pacmanCurrentIndex + width].classList.contains('wall') &&
           pacmanCurrentIndex + width < width*width ) 
@@ -86,7 +85,6 @@ function control(e) {
       break
     
     case 38:
-      console.log('up')
       if (  !squares[pacmanCurrentIndex - width].classList.contains('ghost-lair') &&
             !squares[pacmanCurrentIndex - width].classList.contains('wall') &&
             pacmanCurrentIndex - width >= 0) 
@@ -94,7 +92,6 @@ function control(e) {
       break
     
     case 37:
-      console.log('left')
       if (  !squares[pacmanCurrentIndex - 1].classList.contains('ghost-lair') &&
             !squares[pacmanCurrentIndex - 1].classList.contains('wall') &&
             pacmanCurrentIndex % width !== 0)
@@ -106,7 +103,6 @@ function control(e) {
       break
 
     case 39:
-      console.log('right')
       if (  !squares[pacmanCurrentIndex + 1].classList.contains('ghost-lair') &&
             !squares[pacmanCurrentIndex + 1].classList.contains('wall') &&
             pacmanCurrentIndex % width < width - 1) 
@@ -128,7 +124,6 @@ function pacDotEaten(){
   if ( squares[pacmanCurrentIndex].classList.contains('pac-dot')){
     squares[pacmanCurrentIndex].classList.remove('pac-dot')
     score++
-    console.log(score)
     scoreDisplay.innerHTML = score
   }
 }
@@ -180,10 +175,8 @@ ghosts.forEach(ghost => squares[ghost.startIndex].classList.add(ghost.className)
 ghosts.forEach(ghost => moveGhost(ghost))
 
 function moveGhost(ghost){
-  console.log("moved ghost")
   const directions = [-1, +1, +width, -width]
   let direction = directions[Math.floor(Math.random() * directions.length)]
-  console.log(direction)
 
   ghost.timerId = setInterval( function() {
 
